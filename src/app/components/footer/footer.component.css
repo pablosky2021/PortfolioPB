@@ -1,0 +1,12 @@
+
+
+footer{
+    padding-top: 10px;
+    background-image: url(/assets/images/space.jpg);
+    background-size: 100%;
+    font-size: 14px;
+    text-align: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #80edf5, 0 0 30px #80edf5, 0 0 40px #80edf5, 0 0 55px #80edf5, 0 0 75px #80edf5
+}

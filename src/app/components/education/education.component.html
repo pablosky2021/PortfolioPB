@@ -1,0 +1,116 @@
+
+<!----------------------------------------Parte Modal--------------------------------------->
+<div class="modal fade" id="educationModal" tabindex="-1" aria-labelledby="educationFormlLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="educationFormLabel">Educación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form [formGroup]="educationForm" (ngSubmit)="onSubmit()">
+
+            <!--Input escondido para eduId-->
+            <input type="hidden" name="eduId" formControlName="eduId">
+
+            <!--Input School-->
+            <div class="mb-3">
+                <label for="school" class="col-sm-2 col-form-label">Institución</label>
+                <div class="col-sm-10">
+                  <input type="text" name="school" formControlName="school" class="form-control" required>
+                </div>
+            </div>
+
+            <!--Input Title-->
+            <div class="mb-3">
+                <label for="title" class="col-sm-2 col-form-label">Título</label>
+                <div class="col-sm-10">
+                  <input type="text" name="title" formControlName="title" class="form-control" required>
+                </div>
+            </div>
+
+            <!--Input startYear-->
+            <div class="mb-3">
+                <label for="startYear" class="col-sm-2 col-form-label">Año de Inicio</label>
+                <div class="col-sm-10">
+                  <input type="number" name="startYear" formControlName="startYear" class="form-control" required>
+                </div>
+            </div>
+
+            <!--Input endYear-->
+            <div class="mb-3">
+                <label for="endYear" class="col-sm-2 col-form-label">Año de Fin</label>
+                <div class="col-sm-10">
+                  <input type="number" name="endYear" formControlName="endYear" class="form-control" required>
+                </div>
+            </div>
+          
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----------------------------------Presentacion---------------------------------------------------->
+
+
+<div class="row" id="lineacomp">
+  <div class="col-lg-2">
+    <h2>Educación</h2>
+  </div>
+  <div class="col-lg-10" id="agregar">
+    <!--Boton de agregar item(plus)-->
+    <button *ngIf="isUserLogged" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#educationModal" (click)="onNewEducation()">Agregar</button>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <!--Sangria Izquierda-->
+  <div class="col-lg-1"></div>
+
+  <!--Lista-->
+  <div class="col-lg-10">
+    <ul>
+      <li id="edicion" *ngFor="let education of educationList; let i = index">
+
+        <div class="ilb">
+          <p id="edu-school">{{ education.startYear }} - {{ education.endYear }} - {{ education.school }} - {{ education.title }}</p> 
+        </div>
+    
+        <div class="ilb">
+          <!--Boton de editar item(pen)-->
+          <div class="ilb" *ngIf="isUserLogged">
+            <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#educationModal" (click)="onEditEducation(i)">Editar</button>
+          </div>
+        
+          <!--Boton de borrar item(trash)-->
+          <div class="ilb" *ngIf="isUserLogged">
+            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#educationModal" (click)="onDeleteEducation(i)">Borrar</button>
+          </div>
+        </div>   
+
+      </li>
+    </ul>
+  </div>
+
+  <!--Sangria Derecha-->
+  <div class="col-lg-1"></div>
+
+  <!--Separador-->
+  <div class="sepa col-lg-12"></div>
+  <hr>
+</div>
+
+
+

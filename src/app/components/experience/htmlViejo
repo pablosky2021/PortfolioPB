@@ -1,0 +1,12 @@
+<div class="row">
+    <h1>Experiencia</h1>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+        <ul>
+            <li><div class="ilb"><p>2020-2022 -&nbsp;</p></div><div class="ilb"><button type="button" class="btn btn-outline-info" data-bs-toggle="collapse" data-bs-target="#demo1">Dueño en Apapacho</button><div style="color: rgb(255, 255, 255);" id="demo1" class="collapse">Negocio familiar de artesanías y productos sustentables.</div></div></li>
+            <li><div class="ilb"><p>2016-2019 -&nbsp;</p></div><div class="ilb"><button type="button" class="btn btn-outline-info" data-bs-toggle="collapse" data-bs-target="#demo2">Travesía Argentina-Alaska</button><div style="color: rgb(255, 255, 255);" id="demo2" class="collapse">Negocio familiar de artesanías y productos sustentables.</div></div></li>
+            <li><div class="ilb"><p>2014-2016 -&nbsp;</p></div><div class="ilb"><button type="button" class="btn btn-outline-info" data-bs-toggle="collapse" data-bs-target="#demo3">Project Manager Assistant en Floserve</button><div style="color: rgb(255, 255, 255);" id="demo3" class="collapse">Negocio familiar de artesanías y productos sustentables.</div></div></li>
+        </ul>
+    </div> 
+</div>
+

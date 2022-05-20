@@ -1,0 +1,100 @@
+<div class="row" *ngFor="let persona of personaList; let i = index">
+
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <img src="/assets/images/fotodeperfil.jpg" class="img-fluid" id="fotodeperfil" alt="">    
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+        <h5 id="nombre">{{persona.nombre}} {{persona.apellido}}</h5>
+        <p class="title">{{persona.title1}}</p>
+        <p class="title">{{persona.title2}}</p>
+    </div>
+
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+        <span>
+            <h1>Acerca de mí</h1>
+            <p>{{persona.about}}</p>
+        </span>
+
+        <!--Boton de EDITAR Datos Personales-->
+        <div class="ilb" *ngIf="isUserLogged">
+            <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#personaModal" (click)="onEditPersona(i)">Editar</button>
+        </div>
+
+    </div>
+    
+</div>
+
+
+<!----------------------------------------Parte Modal--------------------------------------->
+<div class="modal fade" id="personaModal" tabindex="-1" aria-labelledby="personaFormlLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="personaFormLabel">Editar Datos Personales</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <div class="modal-body">
+  
+          <form [formGroup]="personaForm" (ngSubmit)="onSubmit()">
+  
+              <!--Input escondido para id-->
+              <input type="hidden" name="id" formControlName="id">
+  
+              <!--Input Nombre-->
+              <div class="mb-3">
+                  <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="nombre" formControlName="nombre" class="form-control" required>
+                  </div>
+              </div>
+
+              <!--Input Apellido-->
+              <div class="mb-3">
+                  <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="apellido" formControlName="apellido" class="form-control" required>
+                  </div>
+              </div>
+  
+              <!--Input Title1-->
+              <div class="mb-3">
+                  <label for="title1" class="col-sm-2 col-form-label">Título 1</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="title1" formControlName="title1" class="form-control" required>
+                  </div>
+              </div>
+  
+            <!--Input Title2-->
+              <div class="mb-3">
+                  <label for="title2" class="col-sm-2 col-form-label">Título 2</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="title2" formControlName="title2" class="form-control" required>
+                  </div>
+              </div>
+
+              <!--Input About-->
+              <div class="mb-3">
+                  <label for="about" class="col-sm-2 col-form-label">Acerca de mí</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="about" formControlName="about" class="form-control" required>
+                  </div>
+              </div>
+
+            
+  
+          </form>
+  
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+  

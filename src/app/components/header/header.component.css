@@ -1,0 +1,40 @@
+div{
+    background-color: black;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#logoap{
+    width: 150px;
+}
+
+button{
+    height: 30%;
+}
+
+.redes{
+    height: 35px;
+}
+
+
+
+#navegacion{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#banner{
+    width: 100%;
+    /*animation-name: deforma;*/
+    animation-duration: 60s;
+    animation-iteration-count: 100;
+}
+@keyframes deforma {
+    0% {width: 100%;}
+    50% {width: 150%;}
+    100% {width: 100%;}
+  }

@@ -1,0 +1,118 @@
+<!----------------------------------------Parte Modal--------------------------------------->
+<div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsFormlLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="skillsFormLabel">Habilidad</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <div class="modal-body">
+  
+          <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+  
+              <!--Input escondido para skillId-->
+              <input type="hidden" name="skillId" formControlName="skillId">
+  
+              <!--Input Name-->
+              <div class="mb-3">
+                  <label for="name" class="col-sm-2 col-form-label">Habilidad</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="name" formControlName="name" class="form-control" required>
+                  </div>
+              </div>
+ 
+              <!--Input Percent-->
+              <div class="mb-3">
+                  <label for="percent" class="col-sm-2 col-form-label">Progreso</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="percent" formControlName="percent" class="form-control" required>
+                  </div>
+              </div>
+
+              <!--Input Image-->
+              <div class="mb-3">
+                  <label for="image" class="col-sm-2 col-form-label">Imagen</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="image" formControlName="image" class="form-control" required>
+                  </div>
+              </div>
+  
+          </form>
+  
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+<!----------------------------------Presentacion---------------------------------------->
+
+<div class="row" id="lineacomp">
+
+  <div class="col-lg-2">
+    <h2>Habilidades</h2>
+  </div>
+
+  <div class="col-lg-10" id="agregar">
+    <!--Boton de agregar item(plus)-->
+    <button *ngIf="isUserLogged" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="onNewSkills()">Agregar</button>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div *ngFor="let skill of skillsList; let i = index" class="skill text-center col-sm-3 col-md-3 col-lg-3">
+      <circle-progress
+      [percent]=skill.percent
+      [radius]="85"
+      [outerStrokeWidth]="16"
+      [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#78C000'"
+      [innerStrokeColor]="'#C7E596'"
+      [animation]="true"
+      [animationDuration]="500"
+
+      [imageSrc]=skill.image
+      [showImage]="true"
+      [imageHeight]="90"
+      [imageWidth]="90"
+
+      [showUnits]="true"
+      [showSubtitle]="true"
+      ></circle-progress>
+
+      <div>
+              <!--Boton de editar item(pen)-->
+              <div class="ilb" *ngIf="isUserLogged">
+                <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="onEditSkills(i)">Editar</button>
+              </div>
+                  
+              <!--Boton de borrar item(trash)-->
+              <div class="ilb" *ngIf="isUserLogged">
+                <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="onDeleteSkills(i)">Borrar</button>
+              </div>
+      </div>
+
+  </div>
+
+
+
+
+
+
+
+ 
+
+
+
+</div>
+

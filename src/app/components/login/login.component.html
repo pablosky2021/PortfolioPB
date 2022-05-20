@@ -1,0 +1,50 @@
+
+<div class="space">
+<h1 class="m-5">Iniciar Sesión</h1>
+
+<!--(ngSubmit) cuando se genera un submit y el formulario es válido, ese evento lo atiende el método que yo indique-->
+<form [formGroup]="formAuth" class="m-5" (ngSubmit)="onSubmit($event)">
+
+    <!--Email-->
+    <div class="mb-3">
+
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+      [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched }"
+      required>
+      <div id="emailHelp" class="form-text">Nunca compartiremos tu email con alguien más.</div>
+      
+      <!--Div condicional para avisar errores-->
+      <div *ngIf="Email?.errors && Email?.touched">
+        <span *ngIf="Email?.hasError('required')" class="text-danger">El email es requerido.</span>
+        <span *ngIf="Email?.hasError('email')" class="text-danger">El email ingresado no tiene un formato válido.</span>
+      </div>
+   
+    </div>
+
+    <!--Password-->
+    <div class="mb-3">
+      
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1"
+      [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched }"
+                required>
+    
+      <!--Div condicional para avisar errores-->
+      <div *ngIf="Password?.errors && Password?.touched">
+        <span *ngIf="Password?.hasError('required')" class="text-danger">La contraseña es requerida.</span>
+        <span *ngIf="Password?.hasError('minlength')" class="text-danger">La contraseña ingresada debe tener al menos 4 caracteres.</span>
+      </div>
+
+    </div>
+
+    <div *ngIf="loginError" class="text-danger">Las credenciales ingresadas no existen en nuestros registros.</div>
+    
+    <div>
+      <button type="submit" class="btn btn-primary" [disabled]="formAuth.invalid">Ingresar</button>
+      <button class="btn btn-primary" routerLink="/portfolio">Cancelar</button>
+    </div>
+
+
+  </form>
+</div>

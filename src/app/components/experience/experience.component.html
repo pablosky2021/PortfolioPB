@@ -1,0 +1,112 @@
+<!--Parte Modal-->
+<div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="experienceFormlLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="experienceFormLabel">Experiencia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
+
+            <!--Input escondido para expId-->
+            <input type="hidden" name="expId" formControlName="expId">
+
+            <!--Input School-->
+            <div class="mb-3">
+                <label for="company" class="col-sm-2 col-form-label">Compañía</label>
+                <div class="col-sm-10">
+                  <input type="text" name="company" formControlName="company" class="form-control" required>
+                </div>
+            </div>
+
+            <!--Input Title-->
+            <div class="mb-3">
+                <label for="position" class="col-sm-2 col-form-label">Posición</label>
+                <div class="col-sm-10">
+                  <input type="text" name="position" formControlName="position" class="form-control" required>
+                </div>
+            </div>
+
+            <!--Input startYear-->
+            <div class="mb-3">
+                <label for="startYear" class="col-sm-2 col-form-label">Año de Inicio</label>
+                <div class="col-sm-10">
+                  <input type="number" name="startYear" formControlName="startYear" class="form-control" required>
+                </div>
+            </div>
+
+            <!--Input endYear-->
+            <div class="mb-3">
+                <label for="endYear" class="col-sm-2 col-form-label">Año de Fin</label>
+                <div class="col-sm-10">
+                  <input type="number" name="endYear" formControlName="endYear" class="form-control" required>
+                </div>
+            </div>
+          
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----------------------------------Presentacion---------------------------------------------------->
+
+
+
+<div class="row" id="lineacomp">
+  <hr>
+  <div class="col-lg-2">
+    <h2>Experiencia</h2>
+  </div>
+  <div class="col-lg-10" id="agregar">
+    <!--Boton de agregar item(plus)-->
+    <button *ngIf="isUserLogged" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#experienceModal" (click)="onNewExperience()">Agregar</button>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <!--Sangria Izquierda-->
+  <div class="col-lg-1"></div>
+
+  <!--Lista-->
+  <div class="col-lg-10">
+    <ul>
+      <li id="edicion" *ngFor="let experience of experienceList; let i = index">
+
+        <div class="ilb">
+          <p id="exp-company">{{ experience.startYear }} - {{ experience.endYear }} - {{ experience.company }} - {{ experience.position }}</p> 
+        </div>
+    
+        <div class="ilb">
+        <!--Boton de editar item(pen)-->
+          <div class="ilb" *ngIf="isUserLogged">
+            <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#experienceModal" (click)="onEditExperience(i)">Editar</button>
+          </div>
+        
+            <!--Boton de borrar item(trash)-->
+          <div class="ilb" *ngIf="isUserLogged">
+            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#experienceModal" (click)="onDeleteExperience(i)">Borrar</button>
+          </div>
+        </div>   
+
+      </li>
+    </ul>
+  </div>
+
+  <!--Sangria Derecha-->
+  <div class="col-lg-1"></div>
+  <hr>
+</div>
+
